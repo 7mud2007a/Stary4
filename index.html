@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفروشات الشهباء | Al-Shahba Furniture - Luxury Bespoke Furniture</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="مفروشات الشهباء - الفخامة والأصالة في صناعة الأثاث الفاخر والقطع التراثية المصممة بعناية فائقة. Al-Shahba Furniture luxury bespoke handcrafted furniture.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Lenis Smooth Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.css">
+
+    <!-- Model Viewer Component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+
+    <!-- Lenis Smooth Scroll JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Brand Logo -->
+            <a href="#" class="nav-brand">
+                <span class="brand-symbol">⚜</span>
+                <span class="brand-title" data-ar="مفروشات الشهباء" data-en="Al-Shahba Furniture">مفروشات الشهباء</span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="nav-links">
+                <a href="#story-section" class="nav-link" data-ar="قصتنا" data-en="Our Story">قصتنا</a>
+                <a href="#products-section" class="nav-link" data-ar="المجموعة الحصرية" data-en="Collection">المجموعة الحصرية</a>
+                <a href="#craft-section" class="nav-link" data-ar="العرض 360°" data-en="360° Showcase">العرض 360°</a>
+                <a href="#contact-section" class="nav-link" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+            </nav>
+
+            <!-- Nav Actions (Lang & Theme Toggle) -->
+            <div class="nav-actions">
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="lang-btn" aria-label="Toggle language">
+                    <i class="fa-solid fa-globe"></i>
+                    <span class="lang-text">EN</span>
+                </button>
+
+                <!-- Theme Toggle Socket Switch -->
+                <div class="theme-switch-container">
+                    <span class="theme-icon theme-icon-sun" title="Light Mode"><i class="fa-solid fa-sun"></i></span>
+                    <div class="socket" id="theme-toggle" role="button" aria-label="Toggle dark/light theme" tabindex="0">
+                        <div class="socket-pin"></div>
+                    </div>
+                    <span class="theme-icon theme-icon-moon" title="Dark Mode"><i class="fa-solid fa-moon"></i></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg" style="background-image: url('assets/hero-bg.jpg');"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <span class="hero-badge" data-ar="⚜ تحف فنية تعيش للأجيال" data-en="⚜ Bespoke Heirloom Craftsmanship">⚜ تحف فنية تعيش للأجيال</span>
+            <h1 class="hero-title" data-ar="مفروشات الشهباء" data-en="Al-Shahba Furniture">مفروشات الشهباء</h1>
+            <p class="hero-subtitle" data-ar="عنوان الفخامة والأصالة الدمشقية في تصميم الأثاث الفاخر" data-en="The Epitome of Damascene Luxury & Bespoke Handcrafted Heritage">عنوان الفخامة والأصالة الدمشقية في تصميم الأثاث الفاخر</p>
+            <p class="hero-description" data-ar="ننسج الأصالة مع التصميم العصري الراقي، مستخدمين أندر أنواع خشب الجوز والتطريز الحريري الذهبي لابتكار قطع فريدة تعكس شخصيتكم الرفيعة." data-en="Blending centuries of Syrian craftsmanship with contemporary elegance. Hand-carved walnut wood, raw silk velvet, and timeless bespoke design.">
+                ننسج الأصالة مع التصميم العصري الراقي، مستخدمين أندر أنواع خشب الجوز والتطريز الحريري الذهبي لابتكار قطع فريدة تعكس شخصيتكم الرفيعة.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#products-section" class="btn btn-primary" data-ar="استكشف المجموعة الحصرية" data-en="Explore Collection">استكشف المجموعة الحصرية</a>
+                <a href="#contact-section" class="btn btn-secondary" data-ar="حجز استشارة خاصة" data-en="Schedule Consultation">حجز استشارة خاصة</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span class="scroll-text" data-ar="اسحب للأسفل للاستكشاف" data-en="Scroll to Experience">اسحب للأسفل للاستكشاف</span>
+            <div class="mouse-icon">
+                <div class="wheel"></div>
+            </div>
+            <i class="fa-solid fa-chevron-down arrow-down"></i>
+        </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE 3D STORYTELLING SEQUENCE -->
+    <section class="storytelling-section" id="story-section">
+        <div class="story-header text-center">
+            <span class="section-tag" data-ar="رحلة الإتقان والابتكار" data-en="Journey of Excellence">رحلة الإتقان والابتكار</span>
+            <h2 class="section-title" data-ar="قصة الكرسي الملكي" data-en="The Imperial Chair Story">قصة الكرسي الملكي</h2>
+            <p class="section-subtitle" data-ar="استكشف تفاصيل الحرفية العالية خطوة بخطوة أثناء التمرير" data-en="Scroll to watch the 3D model glide through each stage of craftsmanship">استكشف تفاصيل الحرفية العالية خطوة بخطوة أثناء التمرير</p>
+        </div>
+
+        <div class="story-pinned-viewport" id="story-pinned-viewport">
+            <!-- Pinned 3D Model Viewport -->
+            <div class="story-model-wrapper" id="story-model-wrapper">
+                <model-viewer
+                    id="story-model"
+                    src="assets/chair_fast.glb"
+                    alt="Al-Shahba Royal Armchair 3D"
+                    shadow-intensity="2"
+                    shadow-softness="0.8"
+                    environment-image="neutral"
+                    camera-orbit="0deg 75deg 2.5m"
+                    field-of-view="30deg"
+                    loading="eager"
+                    interaction-prompt="none">
+                </model-viewer>
+                <div class="model-floating-badge" id="model-floating-badge">
+                    <span id="badge-step-num">01 / 06</span>
+                    <span id="badge-step-text" data-ar="هيكل خشب الجوز" data-en="Solid Walnut Structure">هيكل خشب الجوز</span>
+                </div>
+            </div>
+
+            <!-- Alternating Zig-Zag Text Steps -->
+            <div class="story-steps-container" id="story-steps-container">
+                <!-- Step 1 -->
+                <div class="story-step step-right" data-step="0">
+                    <div class="step-card">
+                        <span class="step-number">01</span>
+                        <h3 data-ar="إرث الأصالة الدمشقية" data-en="Damascene Heritage Legacy">إرث الأصالة الدمشقية</h3>
+                        <p data-ar="تبدأ كل قطعة من عراقة التاريخ الشامي الأصيل، حيث تنتقى أشجار الجوز الطبيعية المعمرة بعناية فائقة لضمان المتانة والأناقة الفريدة عبر الأجيال." data-en="Every masterpiece begins with centuries of Damascene heritage. Hand-selected aged walnut wood is seasoned to perfection for generational durability.">
+                            تبدأ كل قطعة من عراقة التاريخ الشامي الأصيل، حيث تنتقى أشجار الجوز الطبيعية المعمرة بعناية فائقة لضمان المتانة والأناقة الفريدة عبر الأجيال.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="story-step step-left" data-step="1">
+                    <div class="step-card">
+                        <span class="step-number">02</span>
+                        <h3 data-ar="النحت اليدوي والأربيسك" data-en="Hand-Carved Arabesque Art">النحت اليدوي والأربيسك</h3>
+                        <p data-ar="أنامل كبار الحرفيين تنحت التفاصيل الهندسية المعقدة والزخارف النباتية الدقيقة بأسلوب الأربيسك الملكي، محولة الخشب الصامد إلى تحفة متحركة." data-en="Master artisans carve intricate geometric motifs and royal floral arabesques by hand, sculpting living wood into a museum-worthy monument.">
+                            أنامل كبار الحرفيين تنحت التفاصيل الهندسية المعقدة والزخارف النباتية الدقيقة بأسلوب الأربيسك الملكي، محولة الخشب الصامد إلى تحفة متحركة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="story-step step-right" data-step="2">
+                    <div class="step-card">
+                        <span class="step-number">03</span>
+                        <h3 data-ar="التطعيم بالصدف والتذهيب" data-en="Inlaid Mother-of-Pearl & Gold">التطعيم بالصدف والتذهيب</h3>
+                        <p data-ar="يتم تطعيم الجوانب بصدف البحر الطبيعي اللامع وأوراق الذهب الخالص عيار 24، لإضفاء بريق يترقرق مع إضاءة مجلسكم الفاخر." data-en="Inlaid with iridescent natural mother-of-pearl and gilded in 24k gold leaf, casting luminous reflections across your estate.">
+                            يتم تطعيم الجوانب بصدف البحر الطبيعي اللامع وأوراق الذهب الخالص عيار 24، لإضفاء بريق يترقرق مع إضاءة مجلسكم الفاخر.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="story-step step-left" data-step="3">
+                    <div class="step-card">
+                        <span class="step-number">04</span>
+                        <h3 data-ar="الحرير المخملي والراحة الأبدية" data-en="Royal Silk Velvet Cushioning">الحرير المخملي والراحة الأبدية</h3>
+                        <p data-ar="وسائد حشوت بالريش الطبيعي والطبقات المريحة، مغلفة بأجود نسيج الحرير المخملي المستورد والمعالج لتدوم راحته وفخامته طوال العمر." data-en="Multi-layered memory foam and organic goose down wrapped in raw silk velvet upholstery, delivering unparalleled royal comfort.">
+                            وسائد حشوت بالريش الطبيعي والطبقات المريحة، مغلفة بأجود نسيج الحرير المخملي المستورد والمعالج لتدوم راحته وفخامته طوال العمر.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="story-step step-right" data-step="4">
+                    <div class="step-card">
+                        <span class="step-number">05</span>
+                        <h3 data-ar="الهندسة المريحة المتكاملة" data-en="Precision Ergonomic Contour">الهندسة المريحة المتكاملة</h3>
+                        <p data-ar="تم تصميم زوايا الانحناء بدقة هندسية توفر دعماً مثاليًا للظهر والعمود الفقري، لتندمج الفخامة البصرية مع الاسترخاء التام." data-en="Engineered with ergonomic spinal support curves, harmonizing visual opulence with effortless daily posture alignment.">
+                            تم تصميم زوايا الانحناء بدقة هندسية توفر دعماً مثاليًا للظهر والعمود الفقري، لتندمج الفخامة البصرية مع الاسترخاء التام.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="story-step step-left" data-step="5">
+                    <div class="step-card">
+                        <span class="step-number">06</span>
+                        <h3 data-ar="اللمسات النهائية الشاملة" data-en="Master Artisan Polish">اللمسات النهائية الشاملة</h3>
+                        <p data-ar="تطلى القطعة بالزيوت الطبيعية العطرية الشفافة لحماية الخشب وإبراز عروقه الدافئة مع لمسة فاخرة تجعلها جاهزة لمقركم الرفيع." data-en="Sealed with natural organic aromatic oils that accentuate raw wood grains while fortifying against ambient humidity.">
+                            تطلى القطعة بالزيوت الطبيعية العطرية الشفافة لحماية الخشب وإبراز عروقه الدافئة مع لمسة فاخرة تجعلها جاهزة لمقركم الرفيع.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CURATED PRODUCT SHOWCASE -->
+    <section class="products-section" id="products-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag" data-ar="مجموعة الشهباء الفاخرة" data-en="Al-Shahba Signature Collection">مجموعة الشهباء الفاخرة</span>
+                <h2 class="section-title" data-ar="المجموعة الحصرية المختارة" data-en="Curated Product Showcase">المجموعة الحصرية المختارة</h2>
+                <p class="section-subtitle" data-ar="قطع ذات إصدارات محدودة مصممة للنخبة والمجالس الملكية" data-en="Limited edition handcrafted luxury items crafted for distinguished estates">قطع ذات إصدارات محدودة مصممة للنخبة والمجالس الملكية</p>
+            </div>
+
+            <!-- 5-Card Grid -->
+            <div class="product-grid" id="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="card-media">
+                        <img src="assets/product-1.jpg" alt="Damascus Sovereign Sofa" loading="lazy">
+                        <span class="card-badge" data-ar="إصدار محدود" data-en="Limited Edition">إصدار محدود</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title" data-ar="أريكة السيادة الدمشقية" data-en="Damascus Sovereign Sofa">أريكة السيادة الدمشقية</h3>
+                        <div class="card-dimensions">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span data-ar="الأبعاد: 240سم × 95سم × 110سم" data-en="Dim: 240cm × 95cm × 110cm">الأبعاد: 240سم × 95سم × 110سم</span>
+                        </div>
+                        <p class="card-desc" data-ar="أريكة ملكية مطعمة بالنحاس والحرير المطرز بنقوش شامية أصيلة." data-en="Royal sofa inlaid with brass details and damascene silk upholstery.">أريكة ملكية مطعمة بالنحاس والحرير المطرز بنقوش شامية أصيلة.</p>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-val" data-ar="18,500 ر.س" data-en="$4,900">$4,900</span>
+                            </div>
+                            <button class="btn-card-action" aria-label="Add to cart" data-ar="طلب خاص" data-en="Order Bespoke">طلب خاص</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="card-media">
+                        <img src="assets/product-2.jpg" alt="Al-Shahba Royal Console" loading="lazy">
+                        <span class="card-badge" data-ar="مطعم بالصدف" data-en="Pearl Inlaid">مطعم بالصدف</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title" data-ar="كونسول الشهباء الملكي" data-en="Al-Shahba Royal Console">كونسول الشهباء الملكي</h3>
+                        <div class="card-dimensions">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span data-ar="الأبعاد: 180سم × 45سم × 90سم" data-en="Dim: 180cm × 45cm × 90cm">الأبعاد: 180سم × 45سم × 90سم</span>
+                        </div>
+                        <p class="card-desc" data-ar="كونسول مدخل من خشب الجوز الصلب مع سطح من الرخام الشامي الفاخر." data-en="Entry console crafted from solid walnut with rich marble countertop.">كونسول مدخل من خشب الجوز الصلب مع سطح من الرخام الشامي الفاخر.</p>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-val" data-ar="12,200 ر.س" data-en="$3,250">$3,250</span>
+                            </div>
+                            <button class="btn-card-action" aria-label="Add to cart" data-ar="طلب خاص" data-en="Order Bespoke">طلب خاص</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="card-media">
+                        <img src="assets/product-3.jpg" alt="Silk Walnut Dining Table" loading="lazy">
+                        <span class="card-badge" data-ar="الأكثر طلبًا" data-en="Bestseller">الأكثر طلبًا</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title" data-ar="طاولة طعام الجوز والحرير" data-en="Silk Walnut Dining Set">طاولة طعام الجوز والحرير</h3>
+                        <div class="card-dimensions">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span data-ar="الأبعاد: 300سم × 120سم × 78سم" data-en="Dim: 300cm × 120cm × 78cm">الأبعاد: 300سم × 120سم × 78سم</span>
+                        </div>
+                        <p class="card-desc" data-ar="طاولة طعام تسع 12 شخصاً بتصاميم هندسية ومطعمة بخيوط البرونز." data-en="Seats 12 guests with artisan geometric top and polished bronze inlays.">طاولة طعام تسع 12 شخصاً بتصاميم هندسية ومطعمة بخيوط البرونز.</p>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-val" data-ar="24,000 ر.س" data-en="$6,400">$6,400</span>
+                            </div>
+                            <button class="btn-card-action" aria-label="Add to cart" data-ar="طلب خاص" data-en="Order Bespoke">طلب خاص</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="card-media">
+                        <img src="assets/product-4.jpg" alt="Imperial Velvet Armchair" loading="lazy">
+                        <span class="card-badge" data-ar="مخمل حريري" data-en="Raw Velvet">مخمل حريري</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title" data-ar="كرسي فاخر مخملي" data-en="Imperial Velvet Armchair">كرسي فاخر مخملي</h3>
+                        <div class="card-dimensions">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span data-ar="الأبعاد: 95سم × 90سم × 105سم" data-en="Dim: 95cm × 90cm × 105cm">الأبعاد: 95سم × 90سم × 105سم</span>
+                        </div>
+                        <p class="card-desc" data-ar="كرسي فردي مريح بمخمل زمردي ناعم وقاعدة برونزية مصقولة." data-en="Lounge accent chair with deep emerald silk velvet and hand-polished base.">كرسي فردي مريح بمخمل زمردي ناعم وقاعدة برونزية مصقولة.</p>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-val" data-ar="9,800 ر.س" data-en="$2,600">$2,600</span>
+                            </div>
+                            <button class="btn-card-action" aria-label="Add to cart" data-ar="طلب خاص" data-en="Order Bespoke">طلب خاص</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Interactive 3D Docking Slot -->
+                <div class="product-card product-card-interactive" id="dock-card-slot">
+                    <div class="interactive-dock-target" id="dock-target">
+                        <!-- 3D Model will dock into this container via GSAP / Flip logic -->
+                        <div class="dock-placeholder-overlay" id="dock-placeholder-overlay">
+                            <i class="fa-solid fa-cube fa-bounce"></i>
+                            <span data-ar="النموذج التفاعلي يرسو هنا عند التمرير" data-en="3D Model Docks Here on Scroll">النموذج التفاعلي يرسو هنا عند التمرير</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="interactive-controls-hint">
+                            <i class="fa-solid fa-hand-pointer"></i>
+                            <span data-ar="يمكنك تدوير الكرسي وتفحصه تفاعليًا بـ 360°" data-en="Interactive 3D View - Drag & Rotate 360°">يمكنك تدوير الكرسي وتفحصه تفاعليًا بـ 360°</span>
+                        </div>
+
+                        <h3 class="card-title" data-ar="كرسي الشهباء الملكي (النسخة التفاعلية)" data-en="The Royal Shahba Armchair (Interactive 3D)">كرسي الشهباء الملكي (النسخة التفاعلية)</h3>
+                        <div class="card-dimensions">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <span data-ar="الأبعاد: 95سم × 90سم × 105سم" data-en="Dim: 95cm × 90cm × 105cm">الأبعاد: 95سم × 90سم × 105سم</span>
+                        </div>
+                        <p class="card-desc" data-ar="التحفة الفريدة التي تم استعراضها في القصة التفاعلية. جاهزة للطلب الفوري المباشر." data-en="The flagship bespoke model highlighted in our interactive 3D story. Available for immediate custom commission.">
+                            التحفة الفريدة التي تم استعراضها في القصة التفاعلية. جاهزة للطلب الفوري المباشر.
+                        </p>
+
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-val" data-ar="15,750 ر.س" data-en="$4,200">$4,200</span>
+                            </div>
+                            <button class="btn btn-primary btn-dock-buy" data-ar="إضافة للسلة الفاخرة" data-en="Add to Cart - $4,200">إضافة للسلة الفاخرة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SCROLL-BOUND FRAME SCRUBBING (CANVAS) -->
+    <section class="frame-scrub-section" id="craft-section">
+        <div class="frame-scrub-pinned" id="frame-scrub-pinned">
+            <div class="frame-header text-center">
+                <span class="section-tag" data-ar="عرض زوايا الإتقان 360°" data-en="360° Precision Angle Scrub">عرض زوايا الإتقان 360°</span>
+                <h2 class="section-title" data-ar="التشريح الدقيق للتحفة" data-en="Full 360° Frame Scrubbing">التشريح الدقيق للتحفة</h2>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="canvas-wrapper">
+                <canvas id="frame-canvas" width="1280" height="720"></canvas>
+
+                <!-- Floating Scrub Annotation overlays -->
+                <div class="frame-annotation frame-annotation-1" id="annot-1">
+                    <i class="fa-solid fa-award"></i>
+                    <div>
+                        <h4 data-ar="هيكل جوز صلب" data-en="Aged Solid Walnut">هيكل جوز صلب</h4>
+                        <p data-ar="معالج ضد تقلبات المناخ والرطوبة" data-en="Humidity resistant treat">معالج ضد تقلبات المناخ والرطوبة</p>
+                    </div>
+                </div>
+
+                <div class="frame-annotation frame-annotation-2" id="annot-2">
+                    <i class="fa-solid fa-gem"></i>
+                    <div>
+                        <h4 data-ar="نقوش أربيسك يدوية" data-en="Hand-Carved Arabesque">نقوش أربيسك يدوية</h4>
+                        <p data-ar="نحت يدوي دقيق بنسبة 100%" data-en="100% bespoke craftsmanship">نحت يدوي دقيق بنسبة 100%</p>
+                    </div>
+                </div>
+
+                <div class="frame-annotation frame-annotation-3" id="annot-3">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                    <div>
+                        <h4 data-ar="حرير مخملي فاخر" data-en="Royal Raw Velvet">حرير مخملي فاخر</h4>
+                        <p data-ar="ملمس فائق النعومة ومريح" data-en="Ultra soft tactile feel">ملمس فائق النعومة ومريح</p>
+                    </div>
+                </div>
+
+                <!-- Frame Progress Indicator -->
+                <div class="scrub-progress-bar">
+                    <div class="scrub-progress-fill" id="scrub-progress-fill"></div>
+                    <span class="scrub-counter" id="scrub-counter">FRAME 01 / 60</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section" id="contact-section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <a href="#" class="footer-brand">
+                        <span class="brand-symbol">⚜</span>
+                        <span class="brand-title" data-ar="مفروشات الشهباء" data-en="Al-Shahba Furniture">مفروشات الشهباء</span>
+                    </a>
+                    <p class="footer-desc" data-ar="دار الأثاث الفاخر والرائد في الشرق الأوسط. صياغة القصور والمجالس بلمسات التاريخ والجمال الأصيل." data-en="Leading luxury furniture heritage house in the Middle East. Crafting palace and royal estate interiors with enduring Syrian artistry.">
+                        دار الأثاث الفاخر والرائد في الشرق الأوسط. صياغة القصور والمجالس بلمسات التاريخ والجمال الأصيل.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4 class="footer-heading" data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
+                    <ul class="footer-list">
+                        <li><a href="#hero" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                        <li><a href="#story-section" data-ar="قصة الإتقان" data-en="Our Story">قصة الإتقان</a></li>
+                        <li><a href="#products-section" data-ar="المجموعة الحصرية" data-en="Collection">المجموعة الحصرية</a></li>
+                        <li><a href="#craft-section" data-ar="العرض التفاعلي" data-en="360° Showcase">العرض التفاعلي</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact-col">
+                    <h4 class="footer-heading" data-ar="التواصل والاستشارات" data-en="Private Concierge">التواصل والاستشارات</h4>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-location-dot"></i> <span data-ar="الرياض / جُدة / دمشق / دبي" data-en="Riyadh / Jeddah / Damascus / Dubai">الرياض / جُدة / دمشق / دبي</span></li>
+                        <li><i class="fa-solid fa-envelope"></i> <span>concierge@alshahba-furniture.com</span></li>
+                        <li><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 11 800 9000</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter-col">
+                    <h4 class="footer-heading" data-ar="النشرة الخاصة" data-en="Exclusive Newsletter">النشرة الخاصة</h4>
+                    <p data-ar="اشترك ليصلك كالوج المجموعات الخاصة والإصدارات المحدودة فور إطلاقها." data-en="Subscribe to receive private catalogues and limited edition releases.">اشترك ليصلك كالوج المجموعات الخاصة والإصدارات المحدودة فور إطلاقها.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('شكرًا لاشتراككم في النشرة الخاصة بمفروشات الشهباء');">
+                        <input type="email" placeholder="بريدكم الإلكتروني..." required aria-label="Email address">
+                        <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-left nav-arrow"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center">
+                <p>&copy; <span id="year">2025</span> <span data-ar="مفروشات الشهباء. جميع الحقوق محفوظة." data-en="Al-Shahba Furniture. All rights reserved.">مفروشات الشهباء. جميع الحقوق محفوظة.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script src="main.js"></script>
+</body>
+</html>
