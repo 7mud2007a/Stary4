@@ -3,46 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>APEX MOTORS | صالة النخبة للسيارات الفاخرة</title>
+  <title>APEX MOTORS | تجربة سينمائية فاخرة</title>
   
-  <!-- خط تجوال الحديث ومتوافق تماماً مع التصميم -->
+  <!-- خط تجوال الاحترافي -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- مكتبة أيقونات Lucide -->
+  <!-- أيقونات Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- مكتبات الأنيميشن والتمرير السلس -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <style>
-    /* ========================================================
-       DESIGN TOKENS & VARIABLES (مطابق لمعايير UI/UX Pro Max)
-       ======================================================== */
     :root {
-      --bg-primary: #0a0c10;
-      --bg-surface: #12161f;
-      --bg-card: #181d28;
-      --bg-card-hover: #1f2636;
-      
-      --accent-primary: #e63946;
-      --accent-hover: #ff4d5a;
-      --accent-glow: rgba(230, 57, 70, 0.25);
-      
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(230, 57, 70, 0.4);
-      
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
+      --bg-dark: #07090e;
+      --bg-surface: #0e121a;
+      --bg-card: #141923;
+      --accent: #e63946;
+      --accent-glow: rgba(230, 57, 70, 0.4);
+      --text: #f8fafc;
+      --text-muted: #8b9bb4;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius-lg: 24px;
       --radius-pill: 9999px;
-      
-      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 25px var(--accent-glow);
-      
-      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -53,837 +40,542 @@
 
     body {
       font-family: 'Tajawal', sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      line-height: 1.6;
+      background-color: var(--bg-dark);
+      color: var(--text);
       overflow-x: hidden;
-      scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
-    /* Container */
+    /* شريط تقدم التمرير السلس */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #ff7582);
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+      z-index: 9999;
+      box-shadow: 0 0 12px var(--accent);
+    }
+
     .container {
       width: 90%;
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
-    /* ================= NAVBAR ================= */
-    .navbar {
-      position: sticky;
+    /* الهيدر */
+    header {
+      position: fixed;
       top: 0;
-      z-index: 1000;
-      background: rgba(10, 12, 16, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.1rem 0;
-      transition: var(--transition-smooth);
+      width: 100%;
+      z-index: 100;
+      padding: 1.2rem 0;
+      transition: all 0.4s ease;
     }
-    .nav-container {
+    header.scrolled {
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 0;
+    }
+    .nav-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.5rem;
+    .brand {
+      font-size: 1.6rem;
       font-weight: 900;
-      color: var(--text-main);
-      text-decoration: none;
       letter-spacing: -0.5px;
-    }
-    .logo span {
-      color: var(--accent-primary);
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-muted);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--text-main);
-    }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--accent-primary);
-      border-radius: var(--radius-pill);
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: var(--transition-smooth);
-      border: none;
-    }
-    .btn-primary {
-      background: var(--accent-primary);
       color: #fff;
-      box-shadow: 0 4px 15px rgba(230, 57, 70, 0.35);
     }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      box-shadow: var(--shadow-glow);
-      transform: translateY(-2px);
-    }
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-main);
-      border: 1px solid var(--border-subtle);
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
+    .brand span { color: var(--accent); }
 
-    /* ================= HERO SECTION ================= */
-    .hero {
+    /* البطل السينمائي (Scroll Hero) */
+    .hero-pinned {
       position: relative;
-      padding: 7rem 0 5rem;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-      background: radial-gradient(circle at 80% 20%, rgba(230, 57, 70, 0.12), transparent 45%),
-                  radial-gradient(circle at 10% 80%, rgba(30, 41, 59, 0.4), transparent 50%);
+      text-align: center;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 3.5rem;
+    .hero-bg-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(60px);
+      z-index: 1;
+      pointer-events: none;
     }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(230, 57, 70, 0.1);
-      color: var(--accent-primary);
-      border: 1px solid var(--border-accent);
-      padding: 0.4rem 1rem;
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+    }
+    .hero-tag {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(230, 57, 70, 0.12);
+      border: 1px solid var(--accent);
+      color: var(--accent);
       border-radius: var(--radius-pill);
-      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
     }
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 4.5rem;
       font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
     }
     .hero-title span {
-      background: linear-gradient(135deg, #fff 40%, var(--accent-primary) 100%);
+      background: linear-gradient(180deg, #fff 20%, #7d8ea5 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero-desc {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 2.2rem;
-      max-width: 540px;
+      margin-bottom: 2rem;
     }
-    .hero-cta {
+    .hero-car-stage {
+      position: absolute;
+      bottom: -40px;
+      width: 75vw;
+      max-width: 1000px;
+      z-index: 2;
+    }
+    .hero-car-stage img {
+      width: 100%;
+      display: block;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));
+    }
+
+    /* ميزة الاستعراض التفاعلي أثناء التمرير (Feature Spotlight) */
+    .spotlight {
+      min-height: 100vh;
       display: flex;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 2rem;
-    }
-    .stat-item h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .stat-item p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .hero-visual {
+      align-items: center;
+      padding: 8rem 0;
       position: relative;
     }
-    .hero-image-wrapper {
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .spotlight-image-box {
       position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+      border: 1px solid var(--border);
     }
-    .hero-image-wrapper img {
+    .spotlight-image-box img {
       width: 100%;
-      height: 100%;
+      height: 500px;
       object-fit: cover;
       display: block;
-      transition: var(--transition-smooth);
     }
-    .hero-image-wrapper:hover img {
-      transform: scale(1.03);
+    .spec-badge-box {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-
-    /* ================= FILTERS & SEARCH ================= */
-    .filter-section {
+    .spec-item {
       background: var(--bg-surface);
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 2.5rem 0;
-    }
-    .filter-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .search-box {
-      position: relative;
+      border: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
       flex: 1;
-      min-width: 280px;
     }
-    .search-box input {
-      width: 100%;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      padding: 0.85rem 2.8rem 0.85rem 1rem;
-      border-radius: var(--radius-pill);
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      transition: var(--transition-smooth);
+    .spec-item h4 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
     }
-    .search-box input:focus {
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-    .search-box i {
-      position: absolute;
-      right: 1.1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-dim);
-    }
-    .filter-pills {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+    .spec-item span {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      padding: 0.6rem 1.2rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      transition: var(--transition-smooth);
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent-primary);
-      color: #fff;
-      border-color: var(--accent-primary);
     }
 
-    /* ================= SHOWROOM GRID ================= */
-    .showroom {
-      padding: 5rem 0;
+    /* معرض السيارات ثلاثي الأبعاد بالأنيميشن */
+    .catalog {
+      padding: 6rem 0;
+      background: radial-gradient(circle at 50% 0%, rgba(20, 25, 35, 0.6), transparent 70%);
     }
-    .section-header {
+    .section-title {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4rem;
     }
-    .section-header h2 {
-      font-size: 2.3rem;
-      font-weight: 800;
+    .section-title h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
       margin-bottom: 0.5rem;
     }
-    .section-header p {
+    .section-title p {
       color: var(--text-muted);
-      font-size: 1.05rem;
     }
-    .cars-grid {
+
+    .car-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.5rem;
     }
-    .car-card {
+    .card {
       background: var(--bg-card);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      transition: var(--transition-smooth);
-      display: flex;
-      flex-direction: column;
+      border: 1px solid var(--border);
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(60px);
     }
-    .car-card:hover {
-      transform: translateY(-6px);
-      background: var(--bg-card-hover);
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: var(--shadow-card);
+    .card:hover {
+      border-color: rgba(230, 57, 70, 0.4);
+      box-shadow: 0 15px 35px -10px var(--accent-glow);
     }
-    .car-thumb {
+    .card-img-wrap {
+      height: 240px;
+      overflow: hidden;
       position: relative;
-      height: 220px;
-      overflow: hidden;
-      background: #000;
     }
-    .car-thumb img {
+    .card-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .car-card:hover .car-thumb img {
-      transform: scale(1.06);
+    .card:hover .card-img-wrap img {
+      transform: scale(1.08);
     }
-    .tag-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(10, 12, 16, 0.75);
-      backdrop-filter: blur(8px);
-      padding: 0.35rem 0.8rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #fff;
-      border: 1px solid var(--border-subtle);
+    .card-body {
+      padding: 1.8rem;
     }
-    .car-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .car-header {
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 1rem;
     }
-    .car-title {
-      font-size: 1.25rem;
+    .card-title {
+      font-size: 1.35rem;
       font-weight: 800;
     }
-    .car-price {
-      font-size: 1.25rem;
+    .card-price {
+      font-size: 1.35rem;
       font-weight: 900;
-      color: var(--accent-primary);
+      color: var(--accent);
     }
-    .car-specs {
+    .card-specs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0.5rem;
       padding: 1rem 0;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 1.25rem;
-    }
-    .spec-box {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
       text-align: center;
     }
-    .spec-box span {
+    .card-specs span {
       display: block;
       font-size: 0.75rem;
-      color: var(--text-dim);
-    }
-    .spec-box strong {
-      font-size: 0.85rem;
       color: var(--text-muted);
     }
-    .car-footer {
-      margin-top: auto;
-      display: flex;
-      gap: 0.75rem;
-    }
-    .car-footer .btn {
-      flex: 1;
-      justify-content: center;
-      padding: 0.65rem 1rem;
-      font-size: 0.85rem;
-    }
-
-    /* ================= FOOTER ================= */
-    .footer {
-      background: var(--bg-surface);
-      border-top: 1px solid var(--border-subtle);
-      padding: 4rem 0 2rem;
-      margin-top: 4rem;
-    }
-    .footer-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    .footer-desc {
-      color: var(--text-muted);
-      margin-top: 1rem;
-      max-width: 360px;
-      font-size: 0.95rem;
-    }
-    .footer-links h4 {
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-    }
-    .footer-links ul {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: 0.6rem;
-    }
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
+    .card-specs strong {
       font-size: 0.9rem;
-      transition: var(--transition-smooth);
     }
-    .footer-links a:hover {
-      color: var(--accent-primary);
+    .btn-drive {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 0.8rem;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
     }
-    .copyright {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-subtle);
-      color: var(--text-dim);
-      font-size: 0.85rem;
+    .card:hover .btn-drive {
+      background: var(--accent);
+      border-color: var(--accent);
     }
 
-    /* ================= RESPONSIVE ================= */
-    @media (max-width: 992px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-desc {
-        margin: 0 auto 2.2rem;
-      }
-      .hero-cta {
-        justify-content: center;
-      }
-      .hero-stats {
-        justify-content: center;
-      }
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+    /* الفوتر */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
     }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .hero-title {
-        font-size: 2.4rem;
-      }
-      .cars-grid {
-        grid-template-columns: 1fr;
-      }
+
+    @media (max-width: 900px) {
+      .hero-title { font-size: 3rem; }
+      .spotlight-grid { grid-template-columns: 1fr; }
+      .hero-car-stage { width: 95vw; }
     }
   </style>
 </head>
 <body>
 
-  <!-- شريط التنقل العلوي -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <i data-lucide="shield-check" style="color: var(--accent-primary);"></i>
-        APEX<span>MOTORS</span>
-      </a>
+  <!-- شريط التمرير العلوي الحركي -->
+  <div class="scroll-progress" id="progressBar"></div>
 
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#hero" class="active">الرئيسية</a></li>
-          <li><a href="#showroom">المعرض</a></li>
-          <li><a href="#specs">المواصفات والخدمات</a></li>
-          <li><a href="#contact">تواصل معنا</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-actions">
-        <a href="#showroom" class="btn btn-primary">
-          <i data-lucide="compass" style="width: 18px; height: 18px;"></i>
-          استكشف السيارات
-        </a>
+  <!-- الهيدر -->
+  <header id="header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">APEX<span>MOTORS</span></a>
+      <div style="font-weight: 700; font-size: 0.9rem; color: var(--accent);">
+        تجربة قيادة استثنائية
       </div>
     </div>
   </header>
 
-  <!-- القسم الترويجي الرئيسي (Hero Section) -->
-  <section class="hero" id="hero">
-    <div class="container hero-grid">
-      <div class="hero-info">
-        <div class="badge">
-          <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
-          المجموعة الحصرية 2026
-        </div>
-        <h1 class="hero-title">
-          امتلك الفخامة، <br />
-          <span>وقُد المستقبل الآن.</span>
-        </h1>
-        <p class="hero-desc">
-          أكبر تشكيلة من السيارات الرياضية والفارهة المعتمدة مع فحص شامل وضمان فائق الجودة لنضمن لك تجربة قيادة لا تُنسى.
+  <!-- بطل الصفحة التفاعلي بالأنيميشن والتكبير عند التمرير -->
+  <section class="hero-pinned" id="heroPin">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-content" id="heroText">
+      <div class="hero-tag">هندسة فائقة الدقة</div>
+      <h1 class="hero-title">
+        السرعة في أبهى <br>
+        <span>صُورها الأيقونية</span>
+      </h1>
+      <p class="hero-desc">مرر للأسفل لاكتشاف القوة الكامنة خلف أرقى السيارات في العالم</p>
+    </div>
+    
+    <div class="hero-car-stage" id="heroCar">
+      <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop" alt="Sports Car" />
+    </div>
+  </section>
+
+  <!-- قسم Spotlight مع تأثير Parallax وتحريك النصوص عند الظهور -->
+  <section class="spotlight">
+    <div class="container spotlight-grid">
+      <div class="spotlight-image-box" id="spotlightImg">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop" alt="Engine Precision" />
+      </div>
+      <div class="spotlight-text" id="spotlightText">
+        <span style="color: var(--accent); font-weight: 800; letter-spacing: 1px;">أداء حلبات حقيقي</span>
+        <h2 style="font-size: 2.8rem; font-weight: 900; margin: 0.8rem 0 1.2rem;">تجاوز حدود الجاذبية</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">
+          تم ضبط كل تفصيلة ديناميكية هوائية بعناية فائقة لتوفير ثبات غير مسبوق عند المنعطفات الحادة وتسارع يحبس الأنفاس من اللحظة الأولى.
         </p>
-        
-        <div class="hero-cta">
-          <a href="#showroom" class="btn btn-primary">
-            تصفح المعرض
-            <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i>
-          </a>
-          <a href="#contact" class="btn btn-secondary">
-            حجز موعد تجربة القيادة
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <h3>+250</h3>
-            <p>سيارة جاهزة للتسليم</p>
+        <div class="spec-badge-box">
+          <div class="spec-item">
+            <h4>3.2s</h4>
+            <span>تسارع 0 - 100</span>
           </div>
-          <div class="stat-item">
-            <h3>100%</h3>
-            <p>فحص وجودة معتمدة</p>
+          <div class="spec-item">
+            <h4>650</h4>
+            <span>حصان صافي</span>
           </div>
-          <div class="stat-item">
-            <h3>5 سنين</h3>
-            <p>ضمان شامل وخدمة صيانة</p>
+          <div class="spec-item">
+            <h4>V8 Twin</h4>
+            <span>محرك توربيني</span>
           </div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop" alt="Supercar Apex" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- قسم البحث والفلترة -->
-  <section class="filter-section">
-    <div class="container filter-wrapper">
-      <div class="search-box">
-        <i data-lucide="search" style="width: 18px; height: 18px;"></i>
-        <input type="text" id="searchInput" placeholder="ابحث باسم الموديل أو الشركة..." onkeyup="filterCars()" />
-      </div>
-
-      <div class="filter-pills">
-        <button class="filter-btn active" onclick="setCategory('all', this)">الكل</button>
-        <button class="filter-btn" onclick="setCategory('sports', this)">رياضية</button>
-        <button class="filter-btn" onclick="setCategory('luxury', this)">سيدان فارهة</button>
-        <button class="filter-btn" onclick="setCategory('suv', this)">SUV عائلية</button>
-        <button class="filter-btn" onclick="setCategory('electric', this)">كهربائية</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- المعرض (Showroom) -->
-  <section class="showroom" id="showroom">
+  <!-- المعرض مع تأثير التتالي الحركي (Stagger Reveal) -->
+  <section class="catalog" id="catalog">
     <div class="container">
-      <div class="section-header">
-        <h2>السيارات المتاحة حالياً</h2>
-        <p>تصفح أحدث الموديلات المتوفرة لدينا بأفضل الأسعار وأعلى المواصفات</p>
+      <div class="section-title">
+        <h2>أسطول الأحلام المتاح</h2>
+        <p>اختر تحفتك الهندسية القادمة</p>
       </div>
 
-      <div class="cars-grid" id="carsContainer">
-        <!-- سيارة 1 -->
-        <div class="car-card" data-category="sports" data-title="بورش 911 جي تي 3">
-          <div class="car-thumb">
-            <span class="tag-badge">رياضية خارقة</span>
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop" alt="Porsche 911" />
-          </div>
-          <div class="car-content">
-            <div class="car-header">
-              <h3 class="car-title">Porsche 911 GT3</h3>
-              <span class="car-price">$210,000</span>
-            </div>
-            <div class="car-specs">
-              <div class="spec-box">
-                <span>التسارع 0-100</span>
-                <strong>3.4 ثانية</strong>
-              </div>
-              <div class="spec-box">
-                <span>القوة</span>
-                <strong>502 حصان</strong>
-              </div>
-              <div class="spec-box">
-                <span>ناقل الحركة</span>
-                <strong>PDK ثنائي</strong>
-              </div>
-            </div>
-            <div class="car-footer">
-              <button class="btn btn-primary" onclick="alert('تم استلام طلب تجربة القيادة لسيارة Porsche 911 GT3')">طلب تجربة</button>
-              <button class="btn btn-secondary">التفاصيل</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- سيارة 2 -->
-        <div class="car-card" data-category="luxury" data-title="مرسيدس اس كلاس">
-          <div class="car-thumb">
-            <span class="tag-badge">قمة الفخامة</span>
+      <div class="car-grid">
+        <!-- كرت 1 -->
+        <div class="card">
+          <div class="card-img-wrap">
             <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800&auto=format&fit=crop" alt="Mercedes S-Class" />
           </div>
-          <div class="car-content">
-            <div class="car-header">
-              <h3 class="car-title">Mercedes-Benz S580</h3>
-              <span class="car-price">$145,000</span>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Mercedes S580</h3>
+              <span class="card-price">$145,000</span>
             </div>
-            <div class="car-specs">
-              <div class="spec-box">
-                <span>المحرك</span>
-                <strong>V8 Biturbo</strong>
-              </div>
-              <div class="spec-box">
-                <span>القوة</span>
-                <strong>496 حصان</strong>
-              </div>
-              <div class="spec-box">
-                <span>الدفع</span>
-                <strong>4MATIC رباعي</strong>
-              </div>
+            <div class="card-specs">
+              <div><span>القوة</span><strong>496 hp</strong></div>
+              <div><span>الدفع</span><strong>4MATIC</strong></div>
+              <div><span>المحرك</span><strong>V8 Biturbo</strong></div>
             </div>
-            <div class="car-footer">
-              <button class="btn btn-primary" onclick="alert('تم استلام طلب تجربة القيادة لسيارة Mercedes S-Class')">طلب تجربة</button>
-              <button class="btn btn-secondary">التفاصيل</button>
-            </div>
+            <button class="btn-drive" onclick="alert('تم حجز تجربة القيادة')">
+              <i data-lucide="zap" style="width: 16px;"></i> تجربة قيادة
+            </button>
           </div>
         </div>
 
-        <!-- سيارة 3 -->
-        <div class="car-card" data-category="electric" data-title="أودي اي ترون جي تي">
-          <div class="car-thumb">
-            <span class="tag-badge">كهربائية بالكامل</span>
-            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=800&auto=format&fit=crop" alt="Audi RS e-tron GT" />
+        <!-- كرت 2 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=800&auto=format&fit=crop" alt="Audi e-tron GT" />
           </div>
-          <div class="car-content">
-            <div class="car-header">
-              <h3 class="car-title">Audi RS e-tron GT</h3>
-              <span class="car-price">$139,000</span>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Audi RS e-tron</h3>
+              <span class="card-price">$139,000</span>
             </div>
-            <div class="car-specs">
-              <div class="spec-box">
-                <span>المدى</span>
-                <strong>472 كم</strong>
-              </div>
-              <div class="spec-box">
-                <span>القوة</span>
-                <strong>637 حصان</strong>
-              </div>
-              <div class="spec-box">
-                <span>الشحن السريع</span>
-                <strong>22.5 دقيقة</strong>
-              </div>
+            <div class="card-specs">
+              <div><span>المدى</span><strong>472 km</strong></div>
+              <div><span>القوة</span><strong>637 hp</strong></div>
+              <div><span>الشحن</span><strong>22 min</strong></div>
             </div>
-            <div class="car-footer">
-              <button class="btn btn-primary" onclick="alert('تم استلام طلب تجربة القيادة لسيارة Audi RS e-tron GT')">طلب تجربة</button>
-              <button class="btn btn-secondary">التفاصيل</button>
-            </div>
+            <button class="btn-drive" onclick="alert('تم حجز تجربة القيادة')">
+              <i data-lucide="zap" style="width: 16px;"></i> تجربة قيادة
+            </button>
           </div>
         </div>
 
-        <!-- سيارة 4 -->
-        <div class="car-card" data-category="suv" data-title="رينج روفر سبورت">
-          <div class="car-thumb">
-            <span class="tag-badge">دفع رباعي</span>
-            <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=800&auto=format&fit=crop" alt="Range Rover Sport" />
+        <!-- كرت 3 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop" alt="BMW M4" />
           </div>
-          <div class="car-content">
-            <div class="car-header">
-              <h3 class="car-title">Range Rover Sport</h3>
-              <span class="car-price">$115,000</span>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">BMW M4 Competition</h3>
+              <span class="card-price">$98,000</span>
             </div>
-            <div class="car-specs">
-              <div class="spec-box">
-                <span>المحرك</span>
-                <strong>3.0L Turbo</strong>
-              </div>
-              <div class="spec-box">
-                <span>القوة</span>
-                <strong>395 حصان</strong>
-              </div>
-              <div class="spec-box">
-                <span>الراحة</span>
-                <strong>نظام هوائي ديناميكي</strong>
-              </div>
+            <div class="card-specs">
+              <div><span>0-100</span><strong>3.8s</strong></div>
+              <div><span>القوة</span><strong>503 hp</strong></div>
+              <div><span>الناقل</span><strong>8-Speed M</strong></div>
             </div>
-            <div class="car-footer">
-              <button class="btn btn-primary" onclick="alert('تم استلام طلب تجربة القيادة لسيارة Range Rover Sport')">طلب تجربة</button>
-              <button class="btn btn-secondary">التفاصيل</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- سيارة 5 -->
-        <div class="car-card" data-category="sports" data-title="بي ام دبليو ام 4">
-          <div class="car-thumb">
-            <span class="tag-badge">أداء فائق</span>
-            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop" alt="BMW M4 Competition" />
-          </div>
-          <div class="car-content">
-            <div class="car-header">
-              <h3 class="car-title">BMW M4 Competition</h3>
-              <span class="car-price">$98,000</span>
-            </div>
-            <div class="car-specs">
-              <div class="spec-box">
-                <span>التسارع 0-100</span>
-                <strong>3.8 ثانية</strong>
-              </div>
-              <div class="spec-box">
-                <span>القوة</span>
-                <strong>503 حصان</strong>
-              </div>
-              <div class="spec-box">
-                <span>ناقل الحركة</span>
-                <strong>8 سرعات M Steptronic</strong>
-              </div>
-            </div>
-            <div class="car-footer">
-              <button class="btn btn-primary" onclick="alert('تم استلام طلب تجربة القيادة لسيارة BMW M4')">طلب تجربة</button>
-              <button class="btn btn-secondary">التفاصيل</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- سيارة 6 -->
-        <div class="car-card" data-category="electric" data-title="بورش تايكان">
-          <div class="car-thumb">
-            <span class="tag-badge">كهربائية رياضية</span>
-            <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=800&auto=format&fit=crop" alt="Porsche Taycan" />
-          </div>
-          <div class="car-content">
-            <div class="car-header">
-              <h3 class="car-title">Porsche Taycan 4S</h3>
-              <span class="car-price">$125,000</span>
-            </div>
-            <div class="car-specs">
-              <div class="spec-box">
-                <span>المدى</span>
-                <strong>512 كم</strong>
-              </div>
-              <div class="spec-box">
-                <span>القوة</span>
-                <strong>522 حصان</strong>
-              </div>
-              <div class="spec-box">
-                <span>الشحن</span>
-                <strong>800 فولت فائقة</strong>
-              </div>
-            </div>
-            <div class="car-footer">
-              <button class="btn btn-primary" onclick="alert('تم استلام طلب تجربة القيادة لسيارة Porsche Taycan')">طلب تجربة</button>
-              <button class="btn btn-secondary">التفاصيل</button>
-            </div>
+            <button class="btn-drive" onclick="alert('تم حجز تجربة القيادة')">
+              <i data-lucide="zap" style="width: 16px;"></i> تجربة قيادة
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- الفوتر (Footer) -->
-  <footer class="footer" id="contact">
+  <!-- الفوتر -->
+  <footer>
     <div class="container">
-      <div class="footer-content">
-        <div>
-          <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-block;">
-            APEX<span>MOTORS</span>
-          </a>
-          <p class="footer-desc">
-            الوجهة الأولى لاقتناء وتجربة أرقى السيارات الرياضية والفاخرة بأعلى المعايير العالمية المعتمدة.
-          </p>
-        </div>
-
-        <div class="footer-links">
-          <h4>روابط سريعة</h4>
-          <ul>
-            <li><a href="#hero">الرئيسية</a></li>
-            <li><a href="#showroom">معرض السيارات</a></li>
-            <li><a href="#">خيارات التمويل</a></li>
-            <li><a href="#">الضمان الممتد</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links">
-          <h4>ساعات العمل</h4>
-          <ul>
-            <li>السبت - الخميس: 9:00 ص - 10:00 م</li>
-            <li>الجمعة: 4:00 م - 10:00 م</li>
-            <li>هاتف: +966 50 000 0000</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="copyright">
-        جميع الحقوق محفوظة © 2026 APEX MOTORS - صُممت وفق معايير UI/UX Pro Max
-      </div>
+      جميع الحقوق محفوظة © 2026 APEX MOTORS - مزود بحركات Scroll Animation متطورة
     </div>
   </footer>
 
-  <!-- وظائف التفاعل والفلترة والبحث -->
+  <!-- سكربت التحكم بالحركات والتمرير السلس -->
   <script>
-    // تهيئة الأيقونات
     lucide.createIcons();
 
-    let currentCategory = 'all';
+    // 1. تفعيل التمرير السلس الفائق (Lenis Smooth Scroll)
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
 
-    function setCategory(cat, btn) {
-      currentCategory = cat;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filterCars();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
+    requestAnimationFrame(raf);
 
-    function filterCars() {
-      const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.car-card');
+    // ربط Lenis بـ GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
 
-      cards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        const title = (card.getAttribute('data-title') || '').toLowerCase();
-        const cardTitleText = card.querySelector('.car-title').innerText.toLowerCase();
+    // 2. أنيميشن شريط التقدم العلوي
+    gsap.to('#progressBar', {
+      scaleX: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.3
+      }
+    });
 
-        const matchesCat = (currentCategory === 'all' || category === currentCategory);
-        const matchesSearch = title.includes(searchVal) || cardTitleText.includes(searchVal);
+    // 3. أنيميشن الهيدر عند التمرير
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
 
-        if (matchesCat && matchesSearch) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
+    // 4. حركات قسم البطل (Hero Scroll-Zoom & Fade Out)
+    const heroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#heroPin',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+        pin: true
+      }
+    });
+
+    heroTl
+      .to('#heroText', { y: -100, opacity: 0, scale: 0.9, duration: 1 })
+      .to('#heroCar', { scale: 1.35, y: -80, duration: 1.5 }, 0);
+
+    // 5. حركات قسم Spotlight (Slide-in & Parallax)
+    gsap.from('#spotlightImg', {
+      scrollTrigger: {
+        trigger: '.spotlight',
+        start: 'top 75%',
+        end: 'center center',
+        scrub: 1
+      },
+      x: 100,
+      opacity: 0,
+      scale: 0.9
+    });
+
+    gsap.from('#spotlightText', {
+      scrollTrigger: {
+        trigger: '.spotlight',
+        start: 'top 75%',
+        end: 'center center',
+        scrub: 1
+      },
+      x: -100,
+      opacity: 0
+    });
+
+    // 6. ظهور بطاقات السيارات بالتتابع (Stagger Cards Animation)
+    gsap.to('.card', {
+      scrollTrigger: {
+        trigger: '#catalog',
+        start: 'top 70%'
+      },
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
   </script>
 </body>
 </html>
